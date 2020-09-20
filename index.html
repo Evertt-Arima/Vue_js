@@ -16,9 +16,10 @@
         <h1> {{ titulo }} </h1><br>
         <h3> {{ subtitulo }} </h3><br><br>
 
-        <button class="btn" v-bind:class="btnClassLimpar" v-bind:style="btnStyleLimpar">Limpar</button>
-        <button class="btn" :class="btnClassEnviar" :style="btnStyleEnviar">Enviar</button>
-
+        <form action="http://google.com">
+            <button type="submit" class="btn btn-primary" v-on:click.prevent.stop="enviar()">Enviar</button>
+            <button type="submit" class="btn btn-primary" @click.prevent.stop="enviar()">Enviar de forma abreviada</button>
+        </form>
     </div>
 
     <script src="https://unpkg.com/vue"></script>
@@ -27,21 +28,13 @@
             el: "#app",
             data: {
                 titulo:"Vuejs do jeito ninja!",
-                subtitulo: "Aula 7 - v-bind, classes e style",
-                btnClassLimpar: {
-                    "btn-danger": true,
-                    "btn-sm": true
+                subtitulo: "Aula 8 - v-on, manipulando eventos",
+            },
+
+            methods: {
+                enviar() {
+                    alert('Enviado!');
                 },
-                btnClassEnviar: [
-                    "btn-primary",{"btn-lg": false}
-                ],
-                btnStyleEnviar: {
-                    'font-size': '10px'
-                },
-                btnStyleLimpar: [
-                    {'font-size': '50px'},
-                    {'text-transform': 'lowercase'}
-                ]
             }
         });
     </script>
