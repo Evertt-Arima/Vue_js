@@ -9,14 +9,12 @@
 <body>
 
     <div id="app">
-        <h1>{{titulo}}</h1>
-        <div  v-if="usuario.id == 1">
-            id: {{usuario.id}}, <br>
-            nome: {{usuario.nome}}, <br>
-            profissão: {{usuario.profissao}} <br>
-        </div>
-        <div v-else>Nenhum usuário com o ID = 1.</div>
 
+        <h1>{{titulo}}</h1>
+        <ul>
+            <li v-for="(item, index) in linguagens"> {{index}} - {{ item.nome }} </li>
+        </ul>
+    
     </div>
 
     <script src="https://unpkg.com/vue"></script>
@@ -24,12 +22,14 @@
         var app = new Vue({
             el: "#app",
             data: {
-                titulo:"Aula 1 a 3 - Vuejs do jeito ninja!",
-                usuario: {
-                    id: 1,
-                    nome: "John Snow",
-                    profissao: "Ator"
-                }
+                titulo:"Aula 4 - Vuejs do jeito ninja!",
+                linguagens: [
+                    { nome: "Javascript" },
+                    { nome: "Python" },
+                    { nome: "C++" },
+                    { nome: "PHP" },
+                    { nome: "Java" }
+                ]
             }
         });
     </script>
