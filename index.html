@@ -4,17 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Aula 1 - Vuejs do jeoto ninja!</title>
+    <title>WorkOver - Vuejs do jeoto ninja!</title>
 </head>
 <body>
 
     <div id="app">
 
-        <h1>{{titulo}}</h1>
-        <ul>
-            <li v-for="(item, index) in linguagens"> {{index}} - {{ item.nome }} </li>
-        </ul>
-    
+        <h1>{{ titulo }}</h1><br>
+        <h3> {{ subtitulo }} </h3><br><br>
+
+        <label for="">Nome:</label><br>
+        <input type="text" v-model="nome"><br>
+
+        <br><br>
+        <label for="">Telefone:</label><br>
+        <input type="text" v-model="telefone"><br>
+
+        <br><br>
+        <label for="">Gênero:</label><br>
+        <input type="radio" value="Masculino" v-model="genero">Masculino<br>
+        <input type="radio" value="Feminino" v-model="genero">Feminino<br>
+        <input type="radio" value="Prefiro não declarar" v-model="genero">Prefiro não declarar<br>
+
+        <br><br>
+        <label for="">Interesses:</label><br>
+        <input type="checkbox" value="Linguagens e Desenvolvimento" v-model="interesses">Linguagens e Desenvolvimento<br>
+        <input type="checkbox" value="Banco de Dados" v-model="interesses">Banco de Dados<br>
+        <input type="checkbox" value="Infraestrutura e Redes de Comunicação" v-model="interesses">Infraestrutura e Redes de Comunicação<br>
+
+        <br><br>
+        <label for="">Como nos conheceu?</label><br>
+        <select v-model="conheceu">
+            <option value="">Escolha:</option>
+            <option value="Google">Google</option>
+            <option value="Amigos">Amigos</option>
+            <option value="Outros">Outros</option>
+        </select>
+        
+        <br><br>
+        <button>Enviar</button>
+        
+        <hr>
+
+        Nome: {{ nome }} <br>
+        Telefone: {{ telefone }} <br>
+        Gênero: {{ genero }} <br>
+        Interesses: {{ interesses }} <br>
+        Como nos conheceu?: {{ conheceu }} <br>
+ 
+
     </div>
 
     <script src="https://unpkg.com/vue"></script>
@@ -22,14 +60,13 @@
         var app = new Vue({
             el: "#app",
             data: {
-                titulo:"Aula 4 - Vuejs do jeito ninja!",
-                linguagens: [
-                    { nome: "Javascript" },
-                    { nome: "Python" },
-                    { nome: "C++" },
-                    { nome: "PHP" },
-                    { nome: "Java" }
-                ]
+                titulo:"Vuejs do jeito ninja!",
+                subtitulo: "Aula 5 - V-model e formulários",
+                nome: "",
+                telefone: "",
+                genero: "",
+                interesses: [],
+                conheceu: ""
             }
         });
     </script>
