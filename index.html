@@ -16,25 +16,43 @@
         <h1> {{ titulo }} </h1><br>
         <h3> {{ subtitulo }} </h3><br><br>
 
-        <form action="http://google.com">
-            <button type="submit" class="btn btn-primary" v-on:click.prevent.stop="enviar()">Enviar</button>
-            <button type="submit" class="btn btn-primary" @click.prevent.stop="enviar()">Enviar de forma abreviada</button>
-        </form>
+        <ul>
+            <li v-for='usuario in usuarios'> {{ usuario.nome | toUpperCase() }} </li>
+        </ul>
+        
+        <ul>
+            <li v-for='usuario in usuarios'> {{ usuario.nome | truncate('6') }} </li>
+        </ul>
+        
+        
     </div>
 
     <script src="https://unpkg.com/vue"></script>
     <script>
         var app = new Vue({
             el: "#app",
+            
             data: {
                 titulo:"Vuejs do jeito ninja!",
-                subtitulo: "Aula 8 - v-on, manipulando eventos",
+                subtitulo: "Aula 9 - filtros",
+                usuarios: [
+                    { nome: "John Snow" },
+                    { nome: "Daenerys Targaryen" },
+                    { nome: "Tyrion Lannester" }
+                ]
             },
 
-            methods: {
-                enviar() {
-                    alert('Enviado!');
+            filters: {
+                toUpperCase(str) {
+                    return str.toUpperCase();
                 },
+                truncate(str, length) {
+                    output = str;
+                    if (output.length > length) {
+                        output =str.substring(0, length) + ' ...';
+                    }
+                    return output;
+                }
             }
         });
     </script>
