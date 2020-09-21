@@ -16,7 +16,6 @@
         <h1> {{ titulo }} </h1><br>
         <h3> {{ subtitulo }} </h3><br><br>
 
-        {{ fullName }} <br>
 
         
         
@@ -27,32 +26,56 @@
         var app = new Vue({
             el: "#app",
             
+            beforeCreate() {
+                console.log("beforeCreate");
+                console.log('titulo', this.titulo);
+                console.log('subtitulo', this.subtitulo);
+                console.log('el', this.$el);
+            },
+
+            created() {
+                console.log("created");
+                console.log('titulo', this.titulo);
+                console.log('subtitulo', this.subtitulo);
+                console.log('el', this.$el);
+            },
+
+            beforeMount() {   
+                console.log("beforeMount");
+                console.log('titulo', this.titulo);
+                console.log('subtitulo', this.subtitulo);
+                console.log('el', this.$el);
+            },
+
+            mounted() {
+                console.log("mounted");
+                console.log('titulo', this.titulo);
+                console.log('subtitulo', this.subtitulo);
+                console.log('el', this.$el);
+            },
+
+            beforeUpdate() {
+                console.log("beforeUpdate");
+                console.log('titulo', this.titulo);
+                console.log('subtitulo', this.subtitulo);
+                console.log('el', this.$el);
+            },
+
+            updated() {
+                console.log("updated");
+                console.log('titulo', this.titulo);
+                console.log('subtitulo', this.subtitulo);
+                console.log('el', this.$el);
+            },
+
+
             data: {
                 titulo:"Vuejs do jeito ninja!",
-                subtitulo: "Aula 10 - propriedades computed e watch",
-                firstName: "",
-                lastName: "",
-                //fullName: ""
-            },
-            
-            computed: {
-                fullName() {
-                    return this.firstName + ' ' + this.lastName;
-                }
+                subtitulo: "Aula 11 - Vuejs lifecycle e hooks",
                 
             },
-
-            watch: {
-               firstName(newValue) {
-                   this.updateUser();
-               }
-            },
-
-            methods: {
-                updateUser() {
-                    console.log ("Usuário atualizado!");
-                }
-            }
+            
+            
 
             
         });
