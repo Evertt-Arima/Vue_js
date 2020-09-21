@@ -16,13 +16,8 @@
         <h1> {{ titulo }} </h1><br>
         <h3> {{ subtitulo }} </h3><br><br>
 
-        <ul>
-            <li v-for='usuario in usuarios'> {{ usuario.nome | toUpperCase() }} </li>
-        </ul>
-        
-        <ul>
-            <li v-for='usuario in usuarios'> {{ usuario.nome | truncate('6') }} </li>
-        </ul>
+        {{ fullName }} <br>
+
         
         
     </div>
@@ -34,26 +29,32 @@
             
             data: {
                 titulo:"Vuejs do jeito ninja!",
-                subtitulo: "Aula 9 - filtros",
-                usuarios: [
-                    { nome: "John Snow" },
-                    { nome: "Daenerys Targaryen" },
-                    { nome: "Tyrion Lannester" }
-                ]
+                subtitulo: "Aula 10 - propriedades computed e watch",
+                firstName: "",
+                lastName: "",
+                //fullName: ""
+            },
+            
+            computed: {
+                fullName() {
+                    return this.firstName + ' ' + this.lastName;
+                }
+                
             },
 
-            filters: {
-                toUpperCase(str) {
-                    return str.toUpperCase();
-                },
-                truncate(str, length) {
-                    output = str;
-                    if (output.length > length) {
-                        output =str.substring(0, length) + ' ...';
-                    }
-                    return output;
+            watch: {
+               firstName(newValue) {
+                   this.updateUser();
+               }
+            },
+
+            methods: {
+                updateUser() {
+                    console.log ("Usuário atualizado!");
                 }
             }
+
+            
         });
     </script>
     
